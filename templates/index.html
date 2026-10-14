@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <title>Portafolio</title>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="header__nav main-nav">
+        <ul class="main-nav__list main-list">
+          <li class="main-list__item list-item">
+            <a class="list-item__link" href="#home">INICIO</a>
+          </li>
+          <li class="main-list__item list-item">
+            <a class="list-item__link" href="#about">SOBRE MÍ</a>
+          </li>
+          <li class="main-list__item list-item">
+            <a class="list-item__link" href="#skills">MIS HABILIDADES</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="main">
+      <!-- Vista previa -->
+      <section class="main__home home" id="home">
+        <h1 class="home__title">JADE AGUILAR</h1>
+        <p class="home__subtitle">DESARROLLADORA WEB, PROGRAMADORA DE PYTHON</p>
+      </section>
+      <!-- Acerca de mí -->
+      <section class="main__about about" id="about">
+        <h2 class="about__title">SOBRE MÍ</h2>
+        <div class="about__info info-block">
+          <div class="info-block__text">
+            <p>
+              Soy estudiante y programadora en formación, apasionada por la
+              tecnología y la creación de proyectos. Comencé a aprender
+              programación con Python y, desde entonces, he desarrollado
+              diferentes proyectos para poner en práctica mis conocimientos y
+              seguir mejorando.
+            </p>
+            <section>
+              <h3>💻 Habilidades</h3>
+              <ul class="about__list">
+                <li>Python</li>
+                <li>Desarrollo de proyectos y aplicaciones</li>
+                <li>Lógica de programación</li>
+                <li>Resolución de problemas</li>
+                <li>Aprendizaje y experimentación con nuevas tecnologías</li>
+              </ul>
+            </section>
+            <section>
+              <h3>🚀 En lo que estoy trabajando</h3>
+              <p>
+                Actualmente continúo aprendiendo Python y desarrollando
+                proyectos propios. Me interesa explorar diferentes áreas de la
+                programación, desde aplicaciones y juegos hasta proyectos
+                relacionados con tecnología, robótica e ingeniería.
+              </p>
+            </section>
+            <section>
+              <h3>🎯 Mis metas</h3>
+              <p>
+                Quiero seguir creciendo como programadora, aprender nuevos
+                lenguajes y tecnologías y desarrollar proyectos cada vez más
+                completos. A futuro, me gustaría combinar mis conocimientos de
+                programación con la ingeniería para crear soluciones,
+                máquinas y proyectos innovadores.
+              </p>
+            </section>
+            <section>
+              <h3>✨ Un poco más sobre mí</h3>
+              <p>
+                Me gusta aprender haciendo, experimentar con mis propias ideas
+                y buscar la manera de convertirlas en algo que realmente
+                funcione. Para mí, programar no es solamente escribir código,
+                sino una forma de crear, resolver problemas y hacer realidad
+                ideas.
+              </p>
+            </section>
+          </div>
+          <img
+            class="info-block__img"
+            src="../static/img/profile.png"
+            alt="me"
+            width="250"
+            height="250"
+          />
+        </div>
+      </section>
+      <!-- Sección de competencias -->
+      <section class="main__skills skills" id="skills">
+        <h2 class="skills__title">MIS HABILIDADES</h2>
+        <form action="/#skills" method="POST">
+          <ul class="skills__list skills-list">
+            <li class="skills-list__skill skill">
+              <img
+                class="skill__img"
+                src="../static/img/python.png"
+                alt="python"
+                width="150"
+                height="150"
+              />
+              <span class="skill__info">Información sobre la habilidad</span>
+              <input class="skill__button" type="submit" name="button_python" value="VER PROYECTO">
+            </li>
+            <li class="skills-list__skill skill">
+              <img
+                class="skill__img"
+                src="../static/img/discord.png"
+                alt="discord"
+                width="150"
+                height="150"
+              />
+              <span class="skill__info">Información sobre la habilidad</span>
+              <input class="skill__button" type="submit" name="button_discord" value="VER PROYECTO">
+            </li>
+            <li class="skills-list__skill skill">
+              <img
+                class="skill__img"
+                src="../static/img/html.png"
+                alt="html"
+                width="150"
+                height="150"
+              />
+              <span class="skill__info">Información sobre la habilidad</span>
+              <input class="skill__button" type="submit" name="button_html" value="VER PROYECTO">
+            </li>
+            <li class="skills-list__skill skill">
+              <img
+                class="skill__img"
+                src="../static/img/db.webp"
+                alt="SQL"
+                width="150"
+                height="150"
+              />
+              <span class="skill__info">Información sobre la habilidad</span>
+              <input class="skill__button" type="submit" name="button_db" value="VER PROYECTO">
+            </li>
+          </ul>
+        </form>
+        {% if active_project %}
+          <div class="skills__project project" id="project">
+              <img class="project__img" src="{{ active_project.image }}" alt="{{ active_project.title }}" width="500">
+              {% if active_project.url and active_project.url != '#' %}
+                <a class="project__link" href="{{ active_project.url }}" target="_blank">{{ active_project.label }}</a>
+              {% else %}
+                <span class="project__link">{{ active_project.label }}</span>
+              {% endif %}
+          </div>
+        {% endif %}
+      </section>
+      <!-- Formulario de contacto -->
+      <section class="main__feedback feedback" id="feedback">
+        <h2 class="feedback__title">COMENTARIOS</h2>
+        <form action="" method="POST" class="feedback__form form">
+          <label for="email">
+            <input type="email" class="form__input" name="email" id="email" placeholder="E-mail" maxlength="254" required>
+          </label>
+          <label for="text">
+            <textarea name="text" class="form__input" id="text" cols="70" rows="10" maxlength="5000" required placeholder="Comentario"></textarea>
+          </label>
+          <button class="form__button" type="submit">ENVIAR</button>
+        </form>
+        {% if feedback_success %}
+          <p class="feedback__message" role="status">{{ feedback_success }}</p>
+        {% elif feedback_error %}
+          <p class="feedback__message feedback__message--error" role="alert">{{ feedback_error }}</p>
+        {% endif %}
+      </section>
+    </main>
+    <!-- Pie de página con enlaces a redes sociales -->
+    <footer>
+
+    </footer>
+  </body>
+</html>
